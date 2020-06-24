@@ -63,6 +63,18 @@ class Stack{
 		}
 	}
 
+	void print(){
+		if(in < 0){
+			cout<<"stack is empty";
+		}
+		else{
+			for(int i=0;i<=in;i++){
+				cout<<a[i]<<" ";
+			}
+			cout<<endl;
+		}
+	}
+
 		
 
 
@@ -75,11 +87,9 @@ int main(){
 	s.push(2);
 	s.push(3);
 	s.push(4);
-        while(!s.empty()){
-		s.top();
-         s.pop();
-	}
-
+	
+	s.print();
+        
 
 
 
