@@ -50,17 +50,17 @@ class Stack{
 };
 
 int main(){
-	Stack s;
+	Stack* s=new Stack();
 	for (int i = 0 ; i < 100;i++)
 	{	cout << "there " << endl;
-	s.push(i);
+	s->push(i);
 	}	
-	s.top();
-	s.pop();
-	s.pop();
-	s.top();
+	s->top();
+	s->pop();
+	s->pop();
+	s->top();
 
-
+         delete s;
 	return 0;
 }
 
