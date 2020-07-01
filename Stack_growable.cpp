@@ -2,22 +2,29 @@
 
 using namespace std;
 class Stack{
+	int l;
+	int in;
+	int *a;
 	public:
-	int c=5;
-	int l=0;
-	int in=-1;
-	int *a=make_new(a);
+	Stack(){
+		l=1;
+		in=-1;
+		a =new int [l];
+	}
+	
 	
 	int *make_new(int *a){
-		int * new_a=new int [l+c];
+		int * new_a=new int [2*l];
 		for(int i=0;i<l;i++){
 			new_a[i]=a[i];
 		}
-		l+=c;
+		l*=2;
 		return new_a;
 	}
-	void push(int val){
-		if(in==l-1){
+	void push( int val){
+		cout << "here" << endl;
+		if(in==l-2){
+			cout<<"ksmks";
 			a=make_new(a);
 		}
 		a[++in]=val;
@@ -44,15 +51,12 @@ class Stack{
 
 int main(){
 	Stack s;
-	s.push(1);
-	s.push(2);
-	s.push(3);
-	s.push(4);
-	s.push(6);
-	s.push(5);
-	s.push(7);
-	
+	for (int i = 0 ; i < 100;i++)
+	{	cout << "there " << endl;
+	s.push(i);
+	}	
 	s.top();
+	s.pop();
 	s.pop();
 	s.top();
 
