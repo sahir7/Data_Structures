@@ -3,12 +3,14 @@
 using namespace std;
 
 class Queue{
-	int index;
 	int max_size;
+	int f;
+	int r;
 	int *a;
 	public:
 		Queue(){
-			index=-1;
+			r=-1;
+			f=0;
 			max_size=100;
 			a=new int [max_size];
 		}
@@ -28,7 +30,7 @@ void Queue::push(int val){
             if(IsFull()){
 		    cout<<"queue is full"<<endl;
 	    }
-	    a[++index]=val;
+	    a[++r]=val;
 }
 
 void Queue::pop(){
@@ -36,11 +38,8 @@ void Queue::pop(){
 		cout<<"queue is empty"<<endl;
 	}
 	else{
-		for(int i=0;i<index;i++){
-			a[i]=a[i+1];
-		}
-		index--;
-	}
+		f++;
+			}
 }
 
 void Queue::front(){
@@ -48,19 +47,19 @@ void Queue::front(){
 		cout<<"queue is empty"<<endl;
 	}
 	else{
-	cout<<a[0]<<endl;
+	cout<<a[f]<<endl;
 	}
 }
 
 bool Queue::Isempty(){
-	if(index==-1)
+	if(r-f==-1)
 		return true;
 	else
 		return false;
 }
 
 bool Queue::IsFull(){
-	if(index==max_size)
+	if(r==max_size-1)
 		return true;
 	else
 		return  false;
@@ -74,16 +73,12 @@ bool Queue::IsFull(){
 int main(){
 	Queue *q=new Queue();
 	
-//	for(int i=0;i<50;i++){
-//		q->push(i);
-//	}
-//	q->front();
-//	q->pop();
+	for(int i=0;i<101;i++){
+		q->push(i);
+	}
+	q->front();
+        q->pop();
 	q->pop();
 	q->front();
-	if(q->Isempty()){
-		cout<<"empty";
-	}
-	return 0;
-
+         return 0;
 }
