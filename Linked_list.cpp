@@ -2,42 +2,38 @@
 
 using namespace std;
 
-int count=0;
 
 class node{
       public:
 	      int data;
 	      node* next;
-	      node(int d){
-		      data=d;
-		      next=NULL;
-	      }
+	      
 };
+
+node::node(int d){
+	data=d;
+	next=NULL;
+}
 
 class Linked_list{
 	node* head;
 	node* tail;
 	public:
-		Linked_list(){
-			head=NULL;
-			tail=NULL;
-		}
-		
 		bool Isempty();
 		void insertatback(int val);
 		void insertatfront(int val);
-		void insertatmid(int key,int val);
+		void insertatmid(int pos,int val);
 		void removefromback();
-		void removefrommid(int key);
+		void removefrommid(int pos);
 		void removefromfront();
-		
 		void print();
-		
-
-
-
-
+	
 };
+
+Linked_list::Linked_list(){
+	head=NULL;
+	tail=NULL;
+}
 
 bool Linked_list:: Isempty(){
 	if(head==NULL){
@@ -54,8 +50,7 @@ void Linked_list::insertatback(int val){
 		node* n=new node(val);
 		head=n;
 		tail=head;
-		cout<<val<<" insert at "<<count<<endl;
-		count++;
+		cout<<val<<" insert "<<endl;
 	}
 	else{
 		node *n=new node(val);
@@ -63,8 +58,7 @@ void Linked_list::insertatback(int val){
 		temp->next=n;
 		tail=n;
 
-		cout<<val<<" insert at "<<count<<endl;
-		count++;
+		cout<<val<<" insert "<<endl;
 		}
 }
 
@@ -73,22 +67,20 @@ void Linked_list:: insertatfront(int val){
 		node* n=new node(val);
 		head=n;
 		tail=n;
-		cout<<val<<"insert at"<<0;
-		count++;
+		cout<<val<<"insert"<<endl;
 	}
 	else{
 	      node* n=new node(val);
 	      n->next=head;
 	      head=n;
-	      cout<<val<<"insert at 0"<<endl;
-	      count++;
+	      cout<<val<<"insert"<<endl;
 	}
 
 }
 
-void Linked_list::insertatmid(int key,int val){
+void Linked_list::insertatmid(int pos,int val){
 	node *temp=head;
-	for (int i=0;i<key-1;i++){
+	for (int i=0;i<pos-1;i++){
 		temp=temp->next;
 	}
 	node *temp1=temp->next;
@@ -96,8 +88,7 @@ void Linked_list::insertatmid(int key,int val){
 	node *n=new node(val);
 	temp->next=n;
 	n->next=temp1;
-	cout<<val<<"insert at"<<key<<endl;
-	count++;
+	cout<<val<<"insert"<<endl;
 }
 
 
@@ -109,13 +100,11 @@ void Linked_list::removefromfront(){
 	 if(head==tail && head!=NULL){
 		 head=NULL;
 		 tail=head;
-		 count--;
 	 }
 	 else{
 		 node *temp=head->next;
 		 head=NULL;
 		 head=temp;
-		 count--;
 	 }
 
 
@@ -125,7 +114,6 @@ void Linked_list::removefromback(){
 	if (head==tail && head!=NULL){
 		head=NULL;
 		tail=head;
-		count--;
 
 	}
 	else{
@@ -135,21 +123,19 @@ void Linked_list::removefromback(){
 		}
 		tail=temp;
 		tail->next=NULL;
-		count--;
 	}
 
 
 }
 
-void Linked_list::removefrommid(int key){
+void Linked_list::removefrommid(int pos){
 	node* temp=head;
-	for(int i=0;i<key-2;i++){
+	for(int i=0;i<pos-2;i++){
 		temp=temp->next;
 	}
 	node* temp1=temp->next;
 	node* temp2=temp1->next;
 	temp->next=temp2;
-	count--;
 }
 
 	
