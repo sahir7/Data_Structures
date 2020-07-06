@@ -8,6 +8,7 @@ class node{
 	      int data;
 	      node* next;
 	      
+	      node(int d);
 };
 
 node::node(int d){
@@ -19,6 +20,7 @@ class Linked_list{
 	node* head;
 	node* tail;
 	public:
+	        Linked_list();
 		bool Isempty();
 		void insertatback(int val);
 		void insertatfront(int val);
