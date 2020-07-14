@@ -232,6 +232,27 @@ bool  Search(Node* root,int k){
 
 }
 
+bool IsBst(Node* root){
+	Node* pre=NULL;
+	if(root==NULL){
+		return true;
+	}
+	
+
+	if(!IsBst(root->left)){
+		return false;
+	}
+	if(pre!=NULL && root->data <=pre->data){
+		return false;
+	}
+	pre=root;
+
+	return IsBst(root->right);
+
+}
+
+
+
 		
 	    
 
@@ -283,6 +304,13 @@ int main(){
        Levelorder(root);
        cout<<endl;
        PrintLevelwise(root);
+       if(IsBst(root)){
+	       cout<<"yes";
+       }
+       else{
+	       cout<<"no";
+       }
+
 
 
 
